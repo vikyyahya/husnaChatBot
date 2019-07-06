@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="botPrimary">#2B99FF</color>
+    <color name="botSecondary">#CBCCDC</color>
+    <color name="responseColor">#011936</color>
+    <color name="inputColor">#F4FFFD</color>
+    <color name="fabIconColor">#FFF</color>
+</resources>

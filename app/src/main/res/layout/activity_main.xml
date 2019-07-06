@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/l_search"
+        android:layout_margin="3dp">
+
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@id/btn_nav"
+        android:id="@+id/l_search">
+
+        <EditText
+            android:id="@+id/et_search_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded"
+            android:ems="10"
+            android:hint="  Ask me question"
+            android:inputType="text"
+            android:linksClickable="true"
+            android:minHeight="40dp"
+            android:nestedScrollingEnabled="true"
+            android:scrollbars="vertical"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textColorHighlight="@color/colorAccent"
+            android:textColorHint="	#A9A9A9" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@android:drawable/ic_menu_send"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/button_navigation"
+        android:id="@+id/btn_nav"
+        android:background="@color/colorBtnNav"
+        android:layout_alignParentBottom="true">
+
+    </android.support.design.widget.BottomNavigationView>
+    <!--</LinearLayout>-->
+    <!--height for all one line question cards: wrap_content and width: 342-->
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Mychatbot</string>
+    <string name="ask_something_here">Ask me question?</string>
+    <string name="hello">Hello Perkenalkan Nama Saya Husna \n Virtual Asisten Kamu</string>
+    <string name="home">Home</string>
+    <string name="mic">Mic</string>
+    <string name="about">About</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

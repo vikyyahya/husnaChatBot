@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2B99FF</color>
+    <color name="colorPrimaryDark">#2B85FF</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorBtnNav">#E7E7E7</color>
+
+
+
+    <color name="colorSearchBox">#EEEFFF</color>
+
+    <color name="customTitleBar">#FFFFFF</color>
+
+
+
+</resources>
