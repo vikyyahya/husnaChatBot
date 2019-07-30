@@ -16,6 +16,7 @@ public interface ApiService {
 
     @GET("conversation_start.php")
     Call<ChatResp> chatResponse(
-            @Query("say") String say
+            @Query("say") String say,
+            @Query("convo_id") String convoId
     );
 }

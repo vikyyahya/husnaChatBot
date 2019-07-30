@@ -1,5 +1,7 @@
 package id.vikyyahya.mychatbot.presenter;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import id.vikyyahya.mychatbot.ChatContract;
@@ -8,12 +10,17 @@ import id.vikyyahya.mychatbot.model.ChatModel;
 import id.vikyyahya.mychatbot.model.ChatObject;
 import id.vikyyahya.mychatbot.model.ChatResp;
 import id.vikyyahya.mychatbot.model.ChatResponse;
+import id.vikyyahya.mychatbot.model.User;
+
+import static id.vikyyahya.mychatbot.MainActivity.USR;
 
 public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model.OnFinishedListener{
 
     private ArrayList<ChatObject> chatObjects;
     private ChatContract.View view;
     private ChatContract.Model model;
+    User user = new User();
+
 
 
     public ChatPresenter() {
@@ -25,6 +32,11 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         ChatResponse greetingMsg = new ChatResponse();
         greetingMsg.setText("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
         chatObjects.add(greetingMsg);
+
+//        ChatInput chatInput = new ChatInput();
+//        chatInput.setText("gdgd");
+//        chatObjects.add(chatInput);
+
     }
 
 
@@ -50,9 +62,8 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     }
 
     @Override
-    public void requestDataFromServer(String say) {
-        model.sendChatToBot(this,say);
-
+    public void requestDataFromServer(String say,String convoid) {
+        model.sendChatToBot(this,say,convoid);
     }
 
     @Override
@@ -88,6 +99,10 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     private void responseChat(ChatResp chatResp){
         ChatResponse responseMsg = new ChatResponse();
         responseMsg.setText(chatResp.getBotsay());
+        user.setIdcon(chatResp.getConvoId());
+        USR = user;
+        Log.i("tess", "sss pres" + USR.getIdcon());
+
         chatObjects.add(responseMsg);
         view.scrollChatDown();
     }

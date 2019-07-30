@@ -1,84 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/rv_home">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/lyHome"
+        android:background="#fcfcfc">
 
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="8dp">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:background="@color/colorBtnNav"
-            android:src="@drawable/ic_home_black_24dp"
-            android:layout_margin="5dp"
-            android:scaleType="centerInside"
-            android:layout_weight="1"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:background="@color/colorBtnNav"
-            android:src="@drawable/ic_home_black_24dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="90dp"
-            android:background="@color/colorBtnNav"
-            android:src="@drawable/ic_home_black_24dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1" />
-
-
-    </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="8dp">
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="90dp"
-                android:background="@color/colorBtnNav"
-                android:src="@drawable/ic_home_black_24dp"
-                android:layout_margin="5dp"
-                android:scaleType="centerInside"
-                android:layout_weight="1"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="90dp"
-                android:background="@color/colorBtnNav"
-                android:src="@drawable/ic_home_black_24dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1" />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="90dp"
-                android:background="@color/colorBtnNav"
-                android:src="@drawable/ic_home_black_24dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1" />
+            <include layout="@layout/slider" />
+
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/txtHome"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Assalamu'alaikum \nAda yang bisa saya bantu"-->
+                <!--android:textSize="20sp" />-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv1"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgcv1"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/news_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Info terkini"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv2"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/school" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Fasilitas"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv3"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/map" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Alamat"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv4"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/register" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cara daftar"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
 
 
         </LinearLayout>
 
     </LinearLayout>
 
-</ScrollView>
+
+</FrameLayout>

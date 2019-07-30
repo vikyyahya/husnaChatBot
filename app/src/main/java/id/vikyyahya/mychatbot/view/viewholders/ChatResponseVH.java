@@ -21,5 +21,6 @@ public class ChatResponseVH extends BaseViewHolder {
     @Override
     public void onBindView(ChatObject object) {
         this.tvResponseText.setText(object.getText());
+
     }
 }

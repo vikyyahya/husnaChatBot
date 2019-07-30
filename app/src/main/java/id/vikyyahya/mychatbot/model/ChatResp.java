@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class ChatResp implements Serializable {
+
+
     @SerializedName("convo_id")
     @Expose
     private String convoId;

@@ -23,7 +23,8 @@ public interface ChatContract {
         void addLoading();
         void onEditTextActionDone(String inputText);
         ArrayList<ChatObject> getChatObjects();
-        void requestDataFromServer(String say );
+        void requestDataFromServer(String say,String convoid );
+
     }
 
     interface Model {
@@ -33,7 +34,7 @@ public interface ChatContract {
             void onFailure();
         }
 
-        void sendChatToBot(OnFinishedListener onFinishedListener, String say);
+        void sendChatToBot(OnFinishedListener onFinishedListener, String say,String convoid);
     }
 
 }

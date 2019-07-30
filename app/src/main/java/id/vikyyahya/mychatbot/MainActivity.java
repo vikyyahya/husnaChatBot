@@ -1,150 +1,93 @@
 package id.vikyyahya.mychatbot;
 
-import android.os.Handler;
+import android.net.wifi.WifiManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
+import com.synnapps.carouselview.CarouselView;
+
+import id.vikyyahya.mychatbot.model.User;
 import id.vikyyahya.mychatbot.presenter.ChatPresenter;
+import id.vikyyahya.mychatbot.util.PrefUtil;
 import id.vikyyahya.mychatbot.view.ChatAdapter;
+import id.vikyyahya.mychatbot.view.fragment.AboutFragment;
 import id.vikyyahya.mychatbot.view.fragment.ChatFragment;
 import id.vikyyahya.mychatbot.view.fragment.HomeFragment;
 
-public class MainActivity extends AppCompatActivity implements ChatContract.View, View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rvChatList;
-    private EditText etSearchBox;
     private ChatAdapter chatAdapter;
-    private Button btnSend;
-    private Fragment pageContent = new HomeFragment();
 
+    private Fragment pageContent;
     private ChatPresenter presenter;
+    public static User USR ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        rvChatList = (RecyclerView) findViewById(R.id.rv_chat);
-//        etSearchBox = (EditText) findViewById(R.id.et_search_box);
-//        btnSend = (Button) findViewById(R.id.btn_send);
-//        etSearchBox.setOnEditorActionListener(searchBoxListener);
-//        btnSend.setOnClickListener(this);
-//
-//        // Instantiate presenter and attach view
-//        this.presenter = new ChatPresenter();
-//        presenter.attachView(this);
-//
-//        // Instantiate the adapter and give it the list of chat objects
-//        this.chatAdapter = new ChatAdapter(presenter.getChatObjects());
-//
-//        // Set up the RecyclerView with adapter and layout manager
-//        rvChatList.setAdapter(chatAdapter);
-//        rvChatList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//        rvChatList.setItemAnimator(new DefaultItemAnimator());
+        setTitle("Husna Bot");
+//     getSupportFragmentManager().beginTransaction().add(R.id.frag_container,pageContent).commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_nav);
+
+
+//        Log.i ("IP","ip = "+user);
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
+
                         pageContent = new HomeFragment();
                         break;
 
                     case R.id.navigation_chat:
-                        pageContent = new ChatFragment();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        ChatFragment chatFragment = new ChatFragment();
+                        Fragment fragment = new ChatFragment();
+
+                        Log.d("ssssss", String.valueOf(fragment));
+                        if(!(fragment == chatFragment) ){
+
+                            pageContent = new ChatFragment();
+
+                        }
+                        break;
+
+                    case R.id.navigation_about:
+                        pageContent = new AboutFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,pageContent).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, pageContent).commit();
                 return true;
-
             }
         });
-    }
 
-    private EditText.OnEditorActionListener searchBoxListener = new EditText.OnEditorActionListener() {
-        @Override
-        public boolean onEditorAction(TextView tv, int actionId, KeyEvent keyEvent) {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                if (!TextUtils.isEmpty(tv.getText())) {
-                    final String say = tv.getText().toString();
-                    presenter.onEditTextActionDone(say);
+//
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+        Fragment fragment = fragmentManager.findFragmentByTag(HomeFragment.class.getSimpleName());
 
-                    etSearchBox.getText().clear();
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            presenter.requestDataFromServer(say);
-//                            statusLoading = 0;
-                        }
-                    }, 1000);
-                    return true;
-                }
-            }
-            return false;
-        }
-    };
-
-    @Override
-    public void notifyAdapterObjectAdded(int position) {
-        this.chatAdapter.notifyItemInserted(position);
-    }
-
-    @Override
-    public void scrollChatDown() {
-        this.rvChatList.scrollToPosition(presenter.getChatObjects().size() - 1);
-    }
-
-    @Override
-    public void notifyAdapterObjectRemove(int position) {
-
-    }
-
-    @Override
-    public void speakOut(String speakText) {
-
-    }
-
-    @Override
-    public void inputChat(String text) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_send:
-
-
-                final String say = etSearchBox.getText().toString();
-                presenter.onEditTextActionDone(say);
-
-                etSearchBox.getText().clear();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.requestDataFromServer(say);
-//                            statusLoading = 0;
-                    }
-                }, 1000);
-
-                break;
+        if (!(fragment == homeFragment)) {
+            fragmentTransaction.add(R.id.frag_container,homeFragment);
+            fragmentTransaction.commit();
         }
     }
 }
