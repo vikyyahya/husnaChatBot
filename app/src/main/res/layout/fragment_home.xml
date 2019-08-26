@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,8 +19,6 @@
         android:id="@+id/lyHome"
         android:background="#fcfcfc">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,16 +27,6 @@
             android:orientation="horizontal">
 
             <include layout="@layout/slider" />
-
-
-
-            <!--<TextView-->
-                <!--android:id="@+id/txtHome"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Assalamu'alaikum \nAda yang bisa saya bantu"-->
-                <!--android:textSize="20sp" />-->
-
 
         </LinearLayout>
 
@@ -52,8 +40,8 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:id="@+id/cv1"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
                 android:clickable="true"
                 android:layout_margin="10dp">
 
@@ -74,7 +62,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Info terkini"
                         android:textStyle="bold" />
 
@@ -85,8 +73,8 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:id="@+id/cv2"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
                 android:clickable="true"
                 android:layout_margin="10dp">
 
@@ -106,7 +94,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Fasilitas"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -123,8 +111,8 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:id="@+id/cv3"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
                 android:clickable="true"
                 android:layout_margin="10dp">
 
@@ -144,7 +132,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Alamat"
                         android:textStyle="bold" />
 
@@ -155,8 +143,8 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:id="@+id/cv4"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
                 android:clickable="true"
                 android:layout_margin="10dp">
 
@@ -176,8 +164,83 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Cara daftar"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv5"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/vm" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="visi misi"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/cv6"
+                android:layout_width="@dimen/cvwidth"
+                android:layout_height="@dimen/cvhight"
+                android:clickable="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="@drawable/cerclebackgroundbg"
+                        android:padding="10dp"
+                        android:src="@drawable/history" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Sejarah"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -191,4 +254,4 @@
     </LinearLayout>
 
 
-</FrameLayout>
+</ScrollView>

@@ -26,7 +26,9 @@ public class PrefUtil {
     public static User getUser(Context context, String key) {
         Gson gson = new Gson();
         String json = getString(context, key);
+//        String json = getString(context, key);
         User user = gson.fromJson(json, User.class);
+//        User user = getString()
         return user;
     }
 

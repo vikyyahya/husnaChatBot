@@ -1,5 +1,6 @@
 package id.vikyyahya.mychatbot.presenter;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -11,8 +12,8 @@ import id.vikyyahya.mychatbot.model.ChatObject;
 import id.vikyyahya.mychatbot.model.ChatResp;
 import id.vikyyahya.mychatbot.model.ChatResponse;
 import id.vikyyahya.mychatbot.model.User;
+import id.vikyyahya.mychatbot.view.fragment.ChatFragment;
 
-import static id.vikyyahya.mychatbot.MainActivity.USR;
 
 public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model.OnFinishedListener{
 
@@ -23,8 +24,9 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
 
 
-    public ChatPresenter() {
+    public ChatPresenter(ChatContract.View v) {
         // Create the ArrayList for the chat objects
+        this.view = v;
         this.chatObjects = new ArrayList<>();
         this.model = new ChatModel();
 
@@ -32,14 +34,14 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         ChatResponse greetingMsg = new ChatResponse();
         greetingMsg.setText("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
         chatObjects.add(greetingMsg);
+        view.speakOut("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
+
 
 //        ChatInput chatInput = new ChatInput();
 //        chatInput.setText("gdgd");
 //        chatObjects.add(chatInput);
 
     }
-
-
 
     @Override
     public void attachView(ChatContract.View view) {
@@ -88,7 +90,12 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
     @Override
     public void onFinishedFail(String error) {
-        responseErrorChat();
+        ChatResponse responseMsg = new ChatResponse();
+        responseMsg.setText("Maaf gangguan Jaringan");
+        chatObjects.add(responseMsg);
+        view.scrollChatDown();
+        view.speakOut("Maaf gangguan Jaringan");
+
     }
 
     @Override
@@ -99,17 +106,19 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     private void responseChat(ChatResp chatResp){
         ChatResponse responseMsg = new ChatResponse();
         responseMsg.setText(chatResp.getBotsay());
-        user.setIdcon(chatResp.getConvoId());
-        USR = user;
-        Log.i("tess", "sss pres" + USR.getIdcon());
+//        user.setIdcon(chatResp.getConvoId());
+//        USR = user;
+//        Log.i("tess", "sss pres" + USR.getIdcon());
+//        Log.i("Response",chatResp.getBotsay());
 
         chatObjects.add(responseMsg);
         view.scrollChatDown();
+        view.speakOut(chatResp.getBotsay());
     }
 
     private void responseErrorChat(){
         ChatResponse responseMsg = new ChatResponse();
-        responseMsg.setText("Maaf Harap Periksa koneksi Anda");
+        responseMsg.setText("Maaf ganguan server");
         chatObjects.add(responseMsg);
         view.scrollChatDown();
     }

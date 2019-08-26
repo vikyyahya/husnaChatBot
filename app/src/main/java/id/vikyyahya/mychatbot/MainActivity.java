@@ -1,5 +1,6 @@
 package id.vikyyahya.mychatbot;
 
+import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -32,44 +33,35 @@ public class MainActivity extends AppCompatActivity {
     private ChatPresenter presenter;
     public static User USR ;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Husna Bot");
+        setTitle("SMK AL HUSNA");
 //     getSupportFragmentManager().beginTransaction().add(R.id.frag_container,pageContent).commit();
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.btn_nav);
 
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+       String shrepref =  pref.getString("key_name",null);
 
-//        Log.i ("IP","ip = "+user);
-
-
+        Log.i ("tess","sh = "+ shrepref);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-
                         pageContent = new HomeFragment();
                         break;
-
                     case R.id.navigation_chat:
                         FragmentManager fragmentManager = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         ChatFragment chatFragment = new ChatFragment();
                         Fragment fragment = new ChatFragment();
-
                         Log.d("ssssss", String.valueOf(fragment));
                         if(!(fragment == chatFragment) ){
-
                             pageContent = new ChatFragment();
-
                         }
                         break;
-
                     case R.id.navigation_about:
                         pageContent = new AboutFragment();
                         break;

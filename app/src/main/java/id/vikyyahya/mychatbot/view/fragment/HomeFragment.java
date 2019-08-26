@@ -33,23 +33,18 @@ import id.vikyyahya.mychatbot.R;
 import id.vikyyahya.mychatbot.presenter.ChatPresenter;
 import id.vikyyahya.mychatbot.view.ChatAdapter;
 
-
 public class HomeFragment extends Fragment implements View.OnClickListener, ChatContract.View {
 
     private ChatPresenter presenter;
     private ChatAdapter chatAdapter;
     private RecyclerView rvChatList;
-    private CardView cardView1,cardView2,cardView3,cardView4;
     CarouselView carouselView ;
     private BottomNavigationView bottomNavigationView;
     int[] sliderImage = {R.drawable.smk1,R.drawable.smk2,R.drawable.smk3,R.drawable.smk4};
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,33 +54,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
         MainActivity mainActivity = (MainActivity) getActivity();
         bottomNavigationView = mainActivity.findViewById(R.id.btn_nav);
 
-
-
         carouselView = view.findViewById(R.id.crsl1);
         carouselView.setPageCount(sliderImage.length);
         carouselView.setImageListener(imageListener);
 
-        cardView1 = view.findViewById(R.id.cv1);
-        cardView2 = view.findViewById(R.id.cv2);
-        cardView3 = view.findViewById(R.id.cv3);
-        cardView4 = view.findViewById(R.id.cv4);
+        CardView cardView1 = view.findViewById(R.id.cv1);
+        CardView cardView2 = view.findViewById(R.id.cv2);
+        CardView cardView3 = view.findViewById(R.id.cv3);
+        CardView cardView4 = view.findViewById(R.id.cv4);
+        CardView cardView5 = view.findViewById(R.id.cv5);
+        CardView cardView6 = view.findViewById(R.id.cv6);
 
         cardView1.setOnClickListener(this);
         cardView2.setOnClickListener(this);
         cardView3.setOnClickListener(this);
         cardView4.setOnClickListener(this);
-
+        cardView5.setOnClickListener(this);
+        cardView6.setOnClickListener(this);
 
         //    Instantiate presenter and attach view
-        this.presenter = new ChatPresenter();
+        this.presenter = new ChatPresenter(this);
         presenter.attachView(this);
-
+        speakOut("");
         // Instantiate the adapter and give it the list of chat objects
         this.chatAdapter = new ChatAdapter(presenter.getChatObjects());
-
         // Set up the RecyclerView with adapter and layout manager
-
-
         return view;
     }
 
@@ -100,8 +93,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -118,7 +109,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
 
                 bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
 
-
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container,chatFragment,ChatFragment.class.getSimpleName());
                 fragmentTransaction.commit();
@@ -132,6 +122,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
                 Bundle bundle = new Bundle();
                 bundle.putString(ChatFragment.INPUT_CHAT,"Fasilitas");
                 chatFragment.setArguments(bundle);
+                bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
 
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -147,7 +138,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
                 Bundle bundle = new Bundle();
                 bundle.putString(ChatFragment.INPUT_CHAT,"Alamat");
                 chatFragment.setArguments(bundle);
-
+                bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container,chatFragment,ChatFragment.class.getSimpleName());
@@ -162,14 +153,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Chat
                 Bundle bundle = new Bundle();
                 bundle.putString(ChatFragment.INPUT_CHAT,"Cara daftar");
                 chatFragment.setArguments(bundle);
-
+                bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frag_container,chatFragment,ChatFragment.class.getSimpleName());
                 fragmentTransaction.commit();
             }
-        }
+        }else if (v.getId() == R.id.cv5) {
+            FragmentManager fragmentManager = getFragmentManager();
+            if (fragmentManager != null) {
 
+                ChatFragment chatFragment = new ChatFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(ChatFragment.INPUT_CHAT, "visi misi sekolahan");
+                chatFragment.setArguments(bundle);
+                bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, chatFragment, ChatFragment.class.getSimpleName());
+                fragmentTransaction.commit();
+            }
+        }else if (v.getId() == R.id.cv6) {
+            FragmentManager fragmentManager = getFragmentManager();
+            if (fragmentManager != null) {
+
+                ChatFragment chatFragment = new ChatFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(ChatFragment.INPUT_CHAT, "Sejarah sekolahan");
+                chatFragment.setArguments(bundle);
+                bottomNavigationView.setSelectedItemId(R.id.navigation_chat);
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, chatFragment, ChatFragment.class.getSimpleName());
+                fragmentTransaction.commit();
+            }
+        }
     }
 
     @Override
