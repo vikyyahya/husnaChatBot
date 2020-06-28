@@ -2,6 +2,10 @@
     <string name="app_name">Mychatbot</string>
     <string name="ask_something_here">Ask me question?</string>
     <string name="hello">Hello Perkenalkan Nama Saya Husna \n Virtual Asisten Kamu</string>
+    <string name="aboutpage">Ini adalah aplikasi pusat informasi berbasis chatbot
+    yang memudahkan pengguna untuk mencari informasi mengenai sekolah SMK Otomotif Al Husana Tangerang \n \n
+    Al Husna App V.1.0</string>
+
     <string name="home">Home</string>
     <string name="mic">Mic</string>
     <string name="chat">Chat</string>

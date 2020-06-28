@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 public abstract class ChatObject {
 
     public static final int INPUT_OBJECT = 0;
-    public static final int INPUT_OBJECT_ = 0;
+//    public static final int INPUT_OBJECT_ = 0;
 
     public static final int RESPONSE_OBJECT = 1;
 

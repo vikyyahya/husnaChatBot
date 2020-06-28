@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 
 import id.vikyyahya.mychatbot.model.ChatResp;
-import id.vikyyahya.mychatbot.model.User;
+//import id.vikyyahya.mychatbot.model.User;
 
 public class PrefUtil {
     public static final String USER_SESSION = "user_session";
@@ -15,22 +15,22 @@ public class PrefUtil {
     public static SharedPreferences getSharedPreference(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
+//
+//    public static void putUser(Context context, String key, User user) {
+//        Gson gson = new Gson();
+//        String json = gson.toJson(user);
+//        String id = user.toString();
+//        putString(context, key, id);
+//    }
 
-    public static void putUser(Context context, String key, User user) {
-        Gson gson = new Gson();
-        String json = gson.toJson(user);
-        String id = user.toString();
-        putString(context, key, id);
-    }
-
-    public static User getUser(Context context, String key) {
-        Gson gson = new Gson();
-        String json = getString(context, key);
+//    public static User getUser(Context context, String key) {
+//        Gson gson = new Gson();
 //        String json = getString(context, key);
-        User user = gson.fromJson(json, User.class);
-//        User user = getString()
-        return user;
-    }
+////        String json = getString(context, key);
+//        User user = gson.fromJson(json, User.class);
+////        User user = getString()
+//        return user;
+//    }
 
     public static void putString(Context context, String key, String value) {
         getSharedPreference(context).edit().putString(key, value).apply();

@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 import com.synnapps.carouselview.CarouselView;
 
-import id.vikyyahya.mychatbot.model.User;
+//import id.vikyyahya.mychatbot.model.User;
 import id.vikyyahya.mychatbot.presenter.ChatPresenter;
 import id.vikyyahya.mychatbot.util.PrefUtil;
 import id.vikyyahya.mychatbot.view.ChatAdapter;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment pageContent;
     private ChatPresenter presenter;
-    public static User USR ;
+//    public static User USR ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

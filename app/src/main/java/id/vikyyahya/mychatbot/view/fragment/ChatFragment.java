@@ -39,7 +39,7 @@ import java.util.Locale;
 
 import id.vikyyahya.mychatbot.ChatContract;
 import id.vikyyahya.mychatbot.R;
-import id.vikyyahya.mychatbot.model.User;
+//import id.vikyyahya.mychatbot.model.User;
 import id.vikyyahya.mychatbot.presenter.ChatPresenter;
 import id.vikyyahya.mychatbot.util.Encript;
 import id.vikyyahya.mychatbot.util.TexttoSpeech;
@@ -56,7 +56,7 @@ public class ChatFragment extends Fragment implements  View.OnClickListener, Cha
     private ChatPresenter presenter;
     public static String INPUT_CHAT = "input chat";
     Encript encript = new Encript();
-    final User user = new User();
+//    final User user = new User();
     private static final int REQUEST_RECORD_PERMISSION = 100;
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
@@ -132,15 +132,12 @@ public class ChatFragment extends Fragment implements  View.OnClickListener, Cha
 
         //    Instantiate presenter and attach view
         this.presenter = new ChatPresenter(this);
-        speakOut("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
-        Log.i("Debugg1",presenter.toString());
         presenter.attachView(this);
-        Log.i("Debugg2", String.valueOf(presenter.getChatObjects()));
+
 
 
         // Instantiate the adapter and give it the list of chat objects
         this.chatAdapter = new ChatAdapter(presenter.getChatObjects());
-        Log.i("Debuggggggggg", String.valueOf(chatAdapter.getItemCount()));
 
 
         if (getArguments() != null) {
@@ -179,7 +176,6 @@ public class ChatFragment extends Fragment implements  View.OnClickListener, Cha
         }
         // Set up the RecyclerView with adapter and layout manager
         rvChatList.setAdapter(chatAdapter);
-        Log.i("Debuggggggggg",chatAdapter.toString());
 
         rvChatList.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -193,10 +189,12 @@ public class ChatFragment extends Fragment implements  View.OnClickListener, Cha
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        Log.i("tess", "fragment" + USR.getIdcon());
 
         ttsutil = new TexttoSpeech(getActivity(), new Locale("id", "ID"), "com.google.android.tts");
 //        this.presenter = new ChatPresenter(this);
+//        this.speakOut("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
+        ttsutil.speak("Assalamu'alaikum, Hallo nama saya Husna ada yang bisa saya bantu ?");
+
 
     }
 
